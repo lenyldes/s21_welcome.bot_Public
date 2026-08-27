@@ -1,0 +1,21 @@
+[Unit]
+Description=Telegram Welcome Bot Service (s21_welcome.bot)
+After=network.target
+
+[Service]
+Type=simple
+# Укажите пользователя вашей системы (например: lenyldes)
+User=lenyldes
+# Укажите путь к рабочей директории проекта
+WorkingDirectory=/home/lenyldes/MyRepo/pet-projects/tg_bots/s21_welcome.bot_Public
+EnvironmentFile=/home/lenyldes/MyRepo/pet-projects/tg_bots/s21_welcome.bot_Public/.env
+ExecStart=/home/lenyldes/MyRepo/pet-projects/tg_bots/s21_welcome.bot_Public/venv/bin/python -m src.main
+Restart=always
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=s21-welcome-bot
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
